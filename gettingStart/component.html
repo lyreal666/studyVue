@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <!--
+    尽管这只是一个刻意设计的例子，但是我们已经设法将应用分割成了两个更小的单元。
+    子单元通过 prop 接口与父单元进行了良好的解耦。我们现在可以进一步改进
+    <todo-item> 组件，提供更为复杂的模板和逻辑，而不会影响到父单元。
+
+    在一个大型应用中，有必要将整个应用程序划分为组件，以使开发更易管理。
+    在后续教程中我们将详述组件，不过这里有一个 (假想的) 例子，以展示使用了组件的应用模板是什么样的：
+
+    <div id="app">
+      <app-nav></app-nav>
+      <app-view>
+        <app-sidebar></app-sidebar>
+        <app-content></app-content>
+      </app-view>
+    </div>
+
+    注意子组件应该在父组件之前被实例化
+    -->
+</head>
+<body>
+<div id="app">
+    {{message}}
+    <ul>
+        <todo-item
+                v-for="item in groceryList"
+                v-bind:todo="item"
+                v-bind:key="item.id">
+        </todo-item>
+    </ul>
+    <todo-item></todo-item>
+</div>
+
+</body>
+<script>
+    Vue.component('todo-item', {
+        props: ['todo', ],
+        template: '<li>{{todo}}</li>'
+    });
+    let app = new Vue({
+        el: '#app',
+        data: {
+            message: 'hello world!',
+            groceryList: [
+                { id: 0, text: '蔬菜' },
+                { id: 1, text: '奶酪' },
+                { id: 2, text: '随便其它什么人吃的东西' }
+            ]
+        }
+    });
+</script>
+</html>

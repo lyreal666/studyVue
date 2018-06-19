@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <!--
+    模板语法和angular有点像
+    将app.message改为Hello Vue!,页面显示会响应式修改
+    -->
+</head>
+<body>
+    <div id="app">
+        {{message}}
+    </div>
+</body>
+<script>
+    let app = new Vue({
+        el: '#app',
+        data: {
+            message: 'hello world!',
+        }
+    })
+</script>
+</html>
