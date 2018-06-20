@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <!--
+        VUE的指令系统很强大,是很重要的概念
+        由四部分组成:
+        1. v-标志
+        2. 类型,bind还是on,区分绑定普通值属性,还是绑定事件
+        3. 参数,用:argument表示,参数用来辅助说明要绑定的属性具体是哪一种
+        4. 修饰符,用.decorateName表示.添加一些辅助功能
+        5. 值,值是一个js表达式
+
+        指令 (Directives) 是带有 v- 前缀的特殊特性。
+        指令特性的值预期是单个 JavaScript 表达式 (v-for 是例外情况，稍后我们再讨论)。
+        指令的职责是，当表达式的值改变时，将其产生的连带影响，响应式地作用于 DOM。
+
+        一些指令能够接收一个“参数”，在指令名称之后以冒号表示。
+        例如，v-bind 指令可以用于响应式地更新 HTML 特性：
+
+        修饰符 (Modifiers) 是以半角句号 . 指明的特殊后缀，用于指出一个指令应该以特殊方式绑定。
+        例如，.prevent 修饰符告诉 v-on 指令对于触发的事件调用 event.preventDefault()：
+    -->
+</head>
+<body>
+<div id="app" align="center">
+    <div v-on:click="handleDivClick">
+        <a v-bind:href="blog5Href">我的ESC服务器上跑的blog5</a> <br>
+        <input type="button" v-on:click.stop="handleButtonClick" value="点我弹出对话框">
+    </div>
+</div>
+</body>
+<script>
+    let app = new Vue({
+        el: '#app',
+        data: {
+            blog5Href: 'http://120.78.173.232:8081/'
+        },
+        methods: {
+            handleButtonClick() {
+                alert('你点击了按钮')
+            },
+            handleDivClick() {
+                alert('你点击了div')
+            }
+        }
+    })
+</script>
+</html>

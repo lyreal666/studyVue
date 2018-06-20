@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <!--
+        mustache(双花括号)文本插值语法
+        使用v-once可以让其插值解绑，但可可能影响使用了该指令的其它需要绑定的属性
+
+        下面的例子测试表明修改grammar h2标签内不会响应式更新
+    -->
+</head>
+<body>
+<div id="app" align="center">
+    <div v-once>
+        <h2>{{grammar}}</h2>
+        <p>{{introduction}}</p>
+    </div>
+</div>
+</body>
+<script>
+    let app = new Vue({
+        el: '#app',
+        data: {
+            grammar: 'mustache',
+            introduction: 'mustache又叫做胡子语法,用来插入文本'
+        },
+        methods: {
+        }
+    })
+</script>
+</html>

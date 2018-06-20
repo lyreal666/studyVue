@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <!--
+
+    -->
+</head>
+<body>
+<div id="example" align="center">
+    <ol v-if="isOlShow">
+        <li>春</li>
+        <li>夏</li>
+        <li>秋</li>
+        <li>冬</li>
+    </ol>
+    <ul>
+        <template v-if="isUlShow">
+            <li>Spring</li>
+            <li>Summer</li>
+            <li>Autumn</li>
+            <li>Winter</li>
+        </template>
+    </ul>
+    <h1 v-if="type === '登入'">登入</h1>
+    <h1 v-else-if="type === '注册'">注册</h1>
+    <h1 v-else>找回密码</h1>
+</div>
+</body>
+<script>
+    var vm = new Vue({
+        el: '#example',
+        data: {
+            isOlShow: false,
+            isUlShow: true,
+            type: ''
+        },
+        computed: {
+        }
+    })
+</script>
+</html>

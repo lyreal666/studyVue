@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <!--
+
+    -->
+</head>
+<body>
+<div id="example" align="center">
+    <template v-if="loginType === 'username'">
+        <label>Username</label>
+        <input placeholder="Enter your username" key="input-username">
+    </template>
+    <template v-else>
+        <label>Email</label>
+        <input placeholder="Enter your email address" key="input-email">
+    </template>
+    <input @click="handleClick" type="button" v-model="buttonText" >
+</div>
+</body>
+<script>
+    var vm = new Vue({
+        el: '#example',
+        data: {
+            loginType: 'username',
+            buttonText: '切换'
+        },
+        computed: {
+        },
+        methods: {
+            handleClick() {
+                this.loginType = this.loginType === 'username' ? 'email' : 'username'
+            }
+        }
+    })
+</script>
+</html>

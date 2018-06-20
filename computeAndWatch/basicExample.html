@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <!--
+        计算属性也是响应式的,根据它依赖的data属性更新
+        下面的例子修改vm.message, reverseMessage也会更新
+    -->
+</head>
+<body>
+<div id="example" align="center">
+    <p>Original message: "{{ message }}"</p>
+    <p>Computed reversed message: "{{ reversedMessage }}"</p>
+</div>
+</body>
+<script>
+    var vm = new Vue({
+        el: '#example',
+        data: {
+            message: 'Hello',
+            testAttr: 'abc'
+        },
+        computed: {
+            // 计算属性的 getter
+            reversedMessage: function () {
+                // `this` 指向 vm 实例
+                console.log('Compute the reverseMessage....');
+                return this.message.split('').reverse().join('')
+            }
+        }
+    })
+</script>
+</html>
