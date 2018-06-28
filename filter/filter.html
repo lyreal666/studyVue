@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="../lib/bootstrap3.3.7.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <!--
+    filter有两种:
+    1.全局---直接在Vue类上定义
+    2.局部---通过filters选项
+    -->
+</head>
+<body>
+<div id="example">
+    <div class="panel panel-default">
+        <div class="panel-body">
+            Basic panel example
+        </div>
+    </div>
+    <div class="container">
+        <input type="text" v-model="keyword">
+        <input type="button" value="search">
+    </div>
+    <table border="4" class="table table-striped">
+        <thead>
+            <th>id</th>
+            <th>name</th>
+            <th>age</th>
+            <th>now</th>
+        </thead>
+        <tbody>
+            <tr v-for="stu in searchedStus" :key="stu.id">
+                <td>{{ stu.id }}</td>
+                <td>{{ stu.name }}</td>
+                <td>{{ stu.age }}</td>
+                <td>{{ new Date() | formatDate}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+<script>
+    var vm = new Vue({
+        el: '#example',
+        data: {
+            keyword: '',
+            students: [
+                {id: 1, name: 'ly', age: 19},
+                {id: 2, name: 'jsq', age: 20}
+            ]
+        },
+        computed: {
+            searchedStus() {
+                return this.students.filter((ele) => ele.name.includes(this.keyword))
+            }
+        },
+        methods: {
+        },
+        filters: {
+            formatDate(date) {
+                return `${date.getFullYear()}-${date.getMonth()}-${date.getDay()}`
+            }
+        }
+    })
+</script>
+</html>

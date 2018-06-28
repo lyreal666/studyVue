@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="xh-CN">
+<head>
+    <meta charset="UTF-8">
+    <link type="text/css" rel="stylesheet" href="../lib/animate.css"/>
+    <link type="text/css" rel="stylesheet" href="../lib/bootstrap3.3.7.css"/>
+    <title></title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue-resource@1.5.1"></script>
+    <!--
+
+    -->
+</head>
+<body>
+    <div id="example" align="center">
+        <input type="button" @click="show = !show" value="toggle">
+        <br/>
+        <transition
+                name="custom-classes-transition"
+                enter-active-class="animated tada"
+                leave-active-class="animated bounceOutRight"
+        >
+            <template v-if="show">
+            <h2>使用animate.css 自定义动画类</h2>
+            </template>
+        </transition>
+    </div>
+</body>
+<script>
+    var vm = new Vue({
+        el: '#example',
+        data: {
+            show: false,
+        },
+        computed: {
+        }
+    })
+</script>
+</html>

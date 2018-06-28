@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="xh-CN">
+<head>
+    <meta charset="UTF-8">
+    <link type="text/css" rel="stylesheet" href="../lib/animate.css"/>
+    <link type="text/css" rel="stylesheet" href="../lib/bootstrap3.3.7.css"/>
+    <title></title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue-resource@1.5.1"></script>
+    <!--
+
+    -->
+    <style>
+        .lst-enter, .lst-leave-to {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .lst-enter-active, .lst-leave-active {
+            transition: all 1s;
+        }
+
+        tbody td {
+            background-color: yellowgreen;
+        }
+
+        .list-item {
+            display: inline-block;
+            margin-right: 10px;
+        }
+        .list-enter-active, .list-leave-active {
+            transition: all 1s;
+        }
+        .list-enter, .list-leave-to
+            /* .list-leave-active for below version 2.1.8 */ {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+    </style>
+</head>
+<body>
+<div id="list-demo" class="demo">
+    <button v-on:click="add">Add</button>
+    <button v-on:click="remove">Remove</button>
+    <transition-group name="list" tag="p">
+    <span v-for="item in items" v-bind:key="item" class="list-item">
+      {{ item }}
+    </span>
+    </transition-group>
+</div>
+<div id="example">
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <form class="form-inline" role="form">
+                <div class="form-group">
+                    <label class="sr-only" for="name">label</label>
+                    <input type="text" v-model="name" class="form-control" name="" id="name" placeholder="name">
+                </div>
+                <div class="form-group">
+                    <label class="sr-only" for="age">label</label>
+                    <input type="text" v-model.number="age" class="form-control" name="" id="age" placeholder="age">
+                </div>
+                <input type="button" value="Submit" class="btn-primary" @click="add">
+            </form>
+        </div>
+    </div>
+    <table class="table table-striped table-hover">
+        <thead>
+        <tr>
+            <th>id</th>
+            <th>name</th>
+            <th>age</th>
+            <th>operation</th>
+        </tr>
+        </thead>
+        <tbody>
+            <transition-group name="lst" tag="div">
+                <tr v-for="people, index in list" :key="people.id">
+                    <td>{{ people.id }}</td>
+                    <td>{{ people.name }}</td>
+                    <td>{{ people.age }}</td>
+                    <td><a @click="del(index)">删除</a></td>
+                </tr>
+            </transition-group>
+        </tbody>
+    </table>
+</div>
+</body>
+<script>
+    var vm = new Vue({
+        el: '#example',
+        data: {
+            list: [
+                {id: 1, name: 'ly', age: 21},
+                {id: 2, name: 'jsq', age: 22},
+            ],
+            name: '',
+            age: '',
+            id: 3
+        },
+        methods: {
+            add() {
+                this.list.push({id: this.id++, name: this.name, age: this.age});
+                this.age = '';
+                this.name = '';
+            },
+            del(index) {
+                this.list.splice(index, 1)
+            }
+        },
+        computed: {
+        }
+    });
+
+    new Vue({
+        el: '#list-demo',
+        data: {
+            items: [1,2,3,4,5,6,7,8,9],
+            nextNum: 10
+        },
+        methods: {
+            randomIndex: function () {
+                return Math.floor(Math.random() * this.items.length)
+            },
+            add: function () {
+                this.items.splice(this.randomIndex(), 0, this.nextNum++)
+            },
+            remove: function () {
+                this.items.splice(this.randomIndex(), 1)
+            },
+        }
+    })
+</script>
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="xh-CN">
+<head>
+    <meta charset="UTF-8">
+    <!--<link type="text/css" rel="stylesheet" href="../lib/animate.css"/>-->
+    <!--<link type="text/css" rel="stylesheet" href="../lib/bootstrap3.3.7.css"/>-->
+    <title></title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue-resource@1.5.1"></script>
+    <!--
+
+    -->
+    <style>
+        #ball {
+            background-color: hotpink;
+            width: 50px;
+            height: 50px;
+            border-radius: 25px;
+        }
+    </style>
+</head>
+<body>
+<div id="example">
+    <input type="button" value="动起来" @click="show = !show">
+    <transition
+            v-on:before-enter="beforeEnter"
+            v-on:enter="enter"
+            v-on:after-enter="afterEnter"
+            v-on:enter-cancelled="enterCancelled"
+
+            v-on:before-leave="beforeLeave"
+            v-on:leave="leave"
+            v-on:after-leave="afterLeave"
+            v-on:leave-cancelled="leaveCancelled"
+            v-bind:css="false"
+    >
+        <div id="ball" v-if="show"></div>
+    </transition>
+</div>
+</body>
+<script>
+    var vm = new Vue({
+        el: '#example',
+        data: {
+            show: false
+        },
+        computed: {
+        },
+        methods: {
+            beforeEnter: function (el) {
+                console.log('beforeEnter');
+                el.style.transform = 'translate(20, 20)'
+                // ...
+            },
+            // 此回调函数是可选项的设置
+            // 与 CSS 结合时使用
+            enter: function (el, done) {
+                console.log('Enter');
+                el.offsetWidth;
+                el.style.transform = 'translate(150px, 450px)';
+                el.style.transition = 'all 1.5s ease';
+                // ...
+                done()
+            },
+            afterEnter: function (el) {
+                console.log('afterEnter');
+                this.show = !this.show;
+                // ...
+            },
+            enterCancelled: function (el) {
+                console.log('EnterCancelled');
+                // ...
+            },
+
+            // --------
+            // 离开时
+            // --------1
+
+            beforeLeave: function (el) {
+                console.log('beforeLeave');
+                // ...
+            },
+            // 此回调函数是可选项的设置
+            // 与 CSS 结合时使用
+            leave: function (el, done) {
+                console.log('Leave');
+                // ...
+                done()
+            },
+            afterLeave: function (el) {
+                console.log('afterLeave');
+                // ...
+            },
+            // leaveCancelled 只用于 v-show 中
+            leaveCancelled: function (el) {
+                console.log('LeaveCancelled');
+                // ...
+            }
+        }
+    })
+</script>
+</html>

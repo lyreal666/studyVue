@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <!--
+
+    -->
+</head>
+<body>
+<div id="app" align="center">
+    <h2>{{ message }}</h2>
+    <h2>{{ innerObj.name }}</h2>
+    <template
+            v-for="item in testArray"
+    >
+        <h2>{{ item }}</h2>
+    </template>
+</div>
+</body>
+<script>
+    let rootObj = {
+        message: 'helloWorld',
+        innerObj: {
+            name: 'ly'
+        },
+        testArray: ['react', 'angular', 'vue']
+    }
+    let app = new Vue({
+        el: '#app',
+        data: rootObj,
+        methods: {
+        }
+    })
+</script>
+</html>

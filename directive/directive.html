@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <!--
+        directive: 指令
+        自定义指令和自定义组件很像,也有生命周期
+        自定义指令当然可以用在组件上,oldVNode和oldValue就是在对组建更新
+    -->
+</head>
+<body>
+<div id="example" align="center">
+    <h1 v-color="'red'" color="blue">这是v-color自定义指令</h1>
+</div>
+</body>
+<script>
+    var vm = new Vue({
+        el: '#example',
+        data: {
+            data: {
+                name: 'ly'
+            }
+        },
+        computed: {
+        },
+        directives: {
+            color: {
+                // el是原生dom
+                bind(el, binding) {
+                    // 这个阶段可以设置style,class
+                    console.log('bind');
+                    console.dir(binding);
+                    Array.from(arguments).forEach((ele, index) => {
+                        // if (typeof ele === 'object') {
+                        //     console.log(`${index}-${JSON.stringify(ele)}`)
+                        // } else {
+                        //     console.log(`${index}-${ele}`)
+                        // }
+                        console.log(ele);
+                    });
+                    el.style.color = 'red'
+                },
+                inserted(ele, binding) {
+                    // 这个阶段可以设置一些需要dom挂载后才能设置的属性,比如focus
+                    console.log('inserted');
+                },
+                componentUpdated() {
+                    console.log('componentUpdated')
+                },
+                unbind() {
+                    console.log('unbind');
+                }
+            }
+        }
+    })
+</script>
+</html>

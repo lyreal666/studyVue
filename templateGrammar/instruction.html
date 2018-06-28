@@ -30,6 +30,11 @@
         <a v-bind:href="blog5Href">我的ESC服务器上跑的blog5</a> <br>
         <input type="button" v-on:click.stop="handleButtonClick" value="点我弹出对话框">
     </div>
+    <div id="outer" @click="clickOuter">
+        <div id="inner" @click.capture="clickInner">
+            <div id="most-inner" :style="{'font-style': 'italic'}" @click="clickMostInner">click</div>
+        </div>
+    </div>
 </div>
 </body>
 <script>
@@ -44,6 +49,15 @@
             },
             handleDivClick() {
                 alert('你点击了div')
+            },
+            clickOuter() {
+                console.log('outer clicked!')
+            },
+            clickInner() {
+                console.log('inner clicked!')
+            },
+            clickMostInner() {
+                console.log(`most inner clicked!`)
             }
         }
     })

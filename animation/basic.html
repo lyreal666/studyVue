@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <!--
+
+    -->
+    <style>
+        .fade-enter-active, .fade-leave-active {
+            transition: opacity .5s;
+        }
+        .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+            opacity: 0;
+        }
+
+
+        .a1-enter, .a1-leave-to {
+            opacity: 0;
+            transform: translateX(600px);
+        }
+
+        .a1-enter-active, .a1-leave-active {
+            transition: all, .5s;
+        }
+
+        #testDiv {
+            width: 50px;
+            height: 50px;
+            background-color: aquamarine;
+            transform: translateX(200px);
+        }
+    </style>
+</head>
+<body>
+<div id="example">
+    <button v-on:click="show = !show">
+        Toggle
+    </button>
+    <transition name="fade">
+        <p v-if="show">hello</p>
+    </transition>
+    <br/>
+
+    <input type="button" value="toggle" @click="ifShow=!ifShow"> <br/>
+    <transition  name="a1">
+        <h2 v-if="ifShow" style="background-color: pink">这是一个h2</h2>
+    </transition>
+    <div id="testDiv"></div>
+
+</div>
+</body>
+<script>
+    var vm = new Vue({
+        el: '#example',
+        data: {
+            show: true,
+            ifShow: true
+        },
+        computed: {
+        }
+    })
+</script>
+</html>
