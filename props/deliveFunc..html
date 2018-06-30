@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <!--<link type="text/css" rel="stylesheet" href="../lib/animate.css"/>-->
+    <!--<link type="text/css" rel="stylesheet" href="../lib/bootstrap3.3.7.css"/>-->
+    <title></title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue-resource@1.5.1"></script>
+    <!--
+        两种触发父组件传递给子组件的函数
+        1. 通过props可以使用Function类型进行数据验证
+        2. 通过全局api $emit(funcName, ...args)调用
+    
+
+    -->
+</head>
+<body>
+<div id="example">
+    <child-component
+        :func1="parentFunc1.bind(this)"
+        @func2="parentFunc2"
+    >
+</child-component>
+</div>
+</body>
+
+<template id="child-cpnt">
+    <div>
+        <h1>我是子组件</h1>
+        <button type="button" class="btn btn-primary" @click="handleClick1">点击执行父组件传递过来的函数1</button>
+        <button type="button" class="btn btn-primary" @click="handleClick2">点击执行父组件传递过来的函数2</button>
+    </div>
+</template>
+
+<script>
+    var vm = new Vue({
+        el: '#example',
+        data: {
+            parentColor: 'red',
+            parentFunc1() {
+                console.log('执行了父组件传递过来的函数1,我给父组件函数传参:', [...arguments]);
+                // 改变父组件的状态
+                this.parentColor = 'green';
+                console.log(vm.parentColor);
+            },
+            parentFunc2() {
+                console.log('执行了父组件传递过来的函数2,我给父组件函数传参:', [...arguments]);
+            }
+        },
+        methods: {
+        },
+        computed: {
+        },
+        components: {
+            'child-component': {
+                props: {
+                    func1: {
+                        type: Function,
+                        required: true,
+                        // default:
+                        // validator(value)
+                    }
+                },
+                methods: {
+                    handleClick1() {
+                        this.func1(1, 2, 3)
+                    },
+                    handleClick2() {
+                        this.$emit('func2', 4, 5, 6)
+                    }
+                },
+                template: '#child-cpnt'
+            }
+        }
+    })
+</script>
+</html>

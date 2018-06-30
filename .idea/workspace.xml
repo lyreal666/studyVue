@@ -2,21 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="93f98be2-a859-4078-af94-4d12b254047a" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/animation/basic.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/animation/hookFunc.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/animation/listAnimation.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/animation/selfDefClass.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/component/props.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/directive/directive.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/filter/filter.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/globalAPI/Vue.set.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/animate.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/bootstrap3.3.7.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/listRender/simpleExample.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/listRender/todoList.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/template3.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templateGrammar/instruction.html" beforeDir="false" afterPath="$PROJECT_DIR$/templateGrammar/instruction.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/animation/listAnimation.html" beforeDir="false" afterPath="$PROJECT_DIR$/animation/listAnimation.html" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -90,8 +76,8 @@
       <file leaf-file-name="listAnimation.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/animation/listAnimation.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-629">
-              <caret line="15" column="40" selection-start-line="15" selection-start-column="40" selection-end-line="15" selection-end-column="40" />
+            <state relative-caret-position="22">
+              <caret line="80" column="45" lean-forward="true" selection-start-line="80" selection-start-column="45" selection-end-line="80" selection-end-column="45" />
               <folding>
                 <element signature="e#406#419#0" />
                 <element signature="n#thead#0;n#table#0;n#div#0;n#body#0;n#html#0;n#!!top" />
@@ -201,11 +187,6 @@
             <path>
               <item name="vue" type="b2602c69:ProjectViewProjectNode" />
               <item name="vue" type="462c0819:PsiDirectoryNode" />
-              <item name="animation" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="vue" type="b2602c69:ProjectViewProjectNode" />
-              <item name="vue" type="462c0819:PsiDirectoryNode" />
               <item name="lib" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
@@ -278,25 +259,25 @@
       <workItem from="1529399325798" duration="40667000" />
       <workItem from="1529830317470" duration="11959000" />
       <workItem from="1530156088330" duration="5187000" />
-      <workItem from="1530161743372" duration="6930000" />
+      <workItem from="1530161743372" duration="7517000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="64743000" />
+    <option name="totallyTimeSpent" value="65330000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="848" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.17965654" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.17965654" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Run" order="2" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Terminal" order="7" weight="0.32911393" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="7" visible="true" weight="0.32911393" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -689,8 +670,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/animation/listAnimation.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-629">
-          <caret line="15" column="40" selection-start-line="15" selection-start-column="40" selection-end-line="15" selection-end-column="40" />
+        <state relative-caret-position="22">
+          <caret line="80" column="45" lean-forward="true" selection-start-line="80" selection-start-column="45" selection-end-line="80" selection-end-column="45" />
           <folding>
             <element signature="e#406#419#0" />
             <element signature="n#thead#0;n#table#0;n#div#0;n#body#0;n#html#0;n#!!top" />

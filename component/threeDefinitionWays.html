@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <!--<link type="text/css" rel="stylesheet" href="../lib/animate.css"/>-->
+    <!--<link type="text/css" rel="stylesheet" href="../lib/bootstrap3.3.7.css"/>-->
+    <title></title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue-resource@1.5.1"></script>
+    <!--
+        Vue 全局组件的3种定义方式
+        1.使用Vue.extrend定义options对象，再用Vue.component定义组件
+        2.使用Vue.component直接传组件标签名和字面量option对象
+        3.模板用标签template定义,再选项中指定组件对应模板的选择器
+    -->
+</head>
+<body>
+<div id="example">
+    <ol>
+        <li><component1></component1></li>
+        <li><component2></component2></li>
+        <li><component3></component3></li>
+        <li>
+            <local-component1></local-component1>
+        </li>
+    </ol>
+</div>
+<template id="c3">
+        <div>
+             <h1>我是组件3</h1>
+        </div>
+    </template>
+<div id="example2">
+    <ol>
+        <li><local-component2></local-component2></li>
+    </ol>
+</div>
+</body>
+<script>
+    // 定义组件方式一
+    Vue.component("component1" ,Vue.extend({
+        template: `<h1>我是组件1</h1>`
+    }))
+
+    // 定义组件方式二
+    // 注意到选项是直接用普通对象字面量定义的,显然比第一种方便
+    Vue.component('component2', {
+        template: `<h1>我是组件2</h1>`
+    })
+
+    // 定义组件方式3
+    Vue.component('component3', {
+        template: '#c3'
+    })
+
+
+    var vm1 = new Vue({
+        el: '#example',
+        data: {
+        },
+        methods: {
+        },
+        computed: {
+        },
+        filters: {
+
+        },
+        components: {
+            // 局部组建tagName就是属性名，比如下面的localComponent1
+            // 局部组建在写标签时应该转换为对应的w3c推荐格式，用中分割线隔开,比如local-component1
+            localComponent1: {
+                template: `<h1>我是局部组件1</h1>`
+            }
+        }
+    })
+
+    var vm2 = new Vue({
+        el: '#example2',
+        data: {
+        },
+        methods: {
+        },
+        computed: {
+        },
+        filters: {
+
+        },
+        components: {
+            // 局部组建tagName就是属性名，比如下面的localComponent1
+            localComponent2: {
+                template: `<h1>我是局部组建2</h1>`
+            }
+        }
+    })
+</script>
+</html>

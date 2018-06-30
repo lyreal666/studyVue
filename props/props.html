@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <!--<link type="text/css" rel="stylesheet" href="../lib/animate.css"/>-->
+    <!--<link type="text/css" rel="stylesheet" href="../lib/bootstrap3.3.7.css"/>-->
+    <title></title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue-resource@1.5.1"></script>
+    <!--
+        props
+        props主要是解决嵌套组件之间的数据传输问题,使用与层级不多的传值情况,如果层级很多,
+        可能就要用专门的状态管理库vuex了
+        组件之间的传递分俩种:
+        1. 传值
+        2. 传函数
+        传值: 数据是从父级组件传递到子级,子组件绑定父级数据,不能反向影响父级数据,
+            但是如果传递的是对象当然能影响父级
+        传函数: 传函数的目的是什么?如果说只是为了不用在子件重复定义函数,那就太片面了
+            传函数主要解决的是子组件如何控制父级组件,或者说子级组件传递数据给父级组件,应位有些时候,
+            父级组件的状态需要子级组件来触发,或者说需要子级组件的数据
+
+        注意: 
+        1.在html中给组件绑定属性和使用自定义组件一样要符合ws标准使用kebab-case(短横线)命名法
+        2.可以使用标准的html定义属性的方法和v-bind绑定字面量常量来传递静态值,
+          也可以使用v-bind或简写:定义动态值
+        3.props可以使用对象来声明可以获取的属性,对象得值使用标准类型可以用来类型验证,
+        类型不匹配是=时会有警告
+        3.可以使用不带参数的v-bind来将一个对象的所有键值对绑定到组件上
+    -->
+</head>
+<body>
+    <div id="example">
+        <child-component1 :delived-data="parentMsg" :no-definedData="'abcd'">
+        </child-component1>
+        <child-component2 :title="'标题'" :likes="1024" :is-published="true" :comment-ids="[12, 13, 14]" :author="{name: 'ly'}">
+        </child-component2>
+        <child-component3 v-bind="object">
+        </child-component3>
+    </div>
+</body>
+<template id="child-cpnt1">
+    <div>
+        <h2>我是子组件一</h2>
+        <!-- 子级组件是无法直接访问父级data,下面会报无法访问parentData错误 -->
+        <!-- <h2>直接使用父级data: {{ parentMsg }}</h2> -->
+        <h2>使用props传递的data: {{ delivedData }}</h2>
+    </div>
+</template>
+<template id="child-cpnt2">
+    <div>
+        <h2>我是子组件二</h2>
+        <ul>
+            <li>{{ title }}</li>
+            <li>{{ likes }}</li>
+            <li>{{ isPublished }}</li>
+            <li>{{ commentIds }}</li>
+            <li>{{ author }}</li>
+        </ul>
+    </div>
+</template>
+<template id="child-cpnt3">
+    <div>
+        <h2>我是子组件3</h2>
+        <h2>{{ name }}</h2>
+        <h2> {{ age }}</h2>
+    </div>
+</template>
+<script>
+    let childComponent1 = {
+        template: '#child-cpnt1',
+        props: ['delivedData'],
+    }
+
+    let childComponent2 = {
+        template: '#child-cpnt2',
+        // 使用对象声明props可以进行数据类型验证
+        props: {
+            title: String,
+            likes: Number,
+            isPublished: Boolean,
+            commentIds: Array,
+            author: Object
+        }
+    }
+
+    let childComponent3 = {
+        props: { "name": String, 'age': Number },
+        template: '#child-cpnt3'
+    }
+    var vm = new Vue({
+        el: '#example',
+        data: {
+            parentMsg: '父组件消息',
+            object: {
+                name: 'ly',
+                age: 21,
+            }
+        },
+        methods: {
+
+        },
+        computed: {
+        },
+        components: {
+            childComponent1,
+            'child-component2': childComponent2,
+            'child-component3': childComponent3,
+        },
+    })
+</script>
+</html>

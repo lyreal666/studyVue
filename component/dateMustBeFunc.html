@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <!--<link type="text/css" rel="stylesheet" href="../lib/animate.css"/>-->
+    <!--<link type="text/css" rel="stylesheet" href="../lib/bootstrap3.3.7.css"/>-->
+    <title></title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue-resource@1.5.1"></script>
+    <!--
+        自定义组建的data必须是函数
+        如果定义为对象,在渲染多个组件时,data会被共享,修改其中应该组件data，其它组建data也会被修改
+    -->
+</head>
+
+<body>
+    <div id="example">
+        <ol>
+            <li v-for="num in 3" :key="num">
+                <local-component1></local-component1>
+            </li>
+        </ol>
+        <br/>
+        <ol>
+            <li v-for="num in 3" :key="num">
+                <local-component2></local-component2>
+            </li>
+        </ol>
+    </div>
+</body>
+<template id="lct">
+    <div>
+        <input type="text" v-model='msg'>
+    </div>
+</template>
+<template id="tmp2">
+    <div>
+        <input type="text" v-model='msg'>
+    </div>
+</template>
+<script>
+    let globalDataObj = {
+        msg: '局部组件1'
+    }
+    var vm = new Vue({
+        el: '#example',
+        data: {
+        },
+        methods: {
+
+        },
+        computed: {
+        },
+        components: {
+            // 下面这种就会导致所有组件共享一个data
+            'local-component1': {
+                template: '#lct',
+                data: () => globalDataObj
+            },
+            'local-component2': {
+                template: '#tmp2',
+                data: () => {
+                    return {
+                        msg: '局部组件2'
+                    }
+                }
+            }
+        }
+    })
+</script>
+
+</html>
